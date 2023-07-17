@@ -1,0 +1,19 @@
+version: '3'
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8080
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    ports:
+      - 3308:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=openmrs
+      - MYSQL_USER=openmrs
+      - MYSQL_PASSWORD=root
